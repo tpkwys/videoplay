@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: dm-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/tpkwys/config-demo.git
+          username: 1554696665@qq.com
+          password: tpktpk1019.
+          search-paths: config-file
+server:
+  port: 7900
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:7776/eureka/

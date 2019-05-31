@@ -1,0 +1,14 @@
+server:
+  port: 7776 #注册中心监听端口
+eureka:
+  client:
+    service-url: #注册中心地址
+      defaultZone: http://localhost:7776/eureka/
+    fetch-registry: false
+    register-with-eureka: false #是否把当前项目添加到注册中心
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root

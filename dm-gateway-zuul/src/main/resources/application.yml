@@ -1,0 +1,17 @@
+
+server:
+  port: 7600
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:7776/eureka/
+#网关,拦截路径 /user/** 可配置多个，dm-user-consumer代表要进行网关处理的客户端
+zuul:
+  routes:
+    dm-user-consumer: /user/**  # /userlogin ->/user/userlogin
+    #dm-xxxx-consumer: /xxx/***
+
+#关闭SecondFilter
+#  SecondFilter:
+#    pre:
+#      disable: true

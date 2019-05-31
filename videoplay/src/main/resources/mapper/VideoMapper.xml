@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaron.videoplay.mapper.VideoMapper">
+    <resultMap id="baseResultMap" type="com.aaron.videoplay.entity.VideoInfo">
+        <id column="video_id" property="videoId" jdbcType="INTEGER" />
+        <result column="video_name" property="videoName" jdbcType="VARCHAR" />
+        <result column="video_desc" property="videoDesc" jdbcType="VARCHAR"/>
+        <result column="video_url" property="videoUrl" jdbcType="VARCHAR"/>
+        <result column="video_category_id" property="videoCategoryId" jdbcType="VARCHAR" />
+        <result column="video_Img_url" property="videoImgUrl" jdbcType="VARCHAR" />
+        <result column="video_up_user" property="videoUpUser" jdbcType="INTEGER" />
+        <result column="video_up_time" property="videoUpTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <select id="getVideosByCategory" resultMap="baseResultMap" parameterType="int">
+        select*from video_info where video_category_id=#{category};
+    </select>
+    <select id="getVideosByUserId" resultMap="baseResultMap" parameterType="int">
+        select*from video_info where video_up_user=#{userId};
+    </select>
+    <delete id="deleteById" parameterType="int">
+        delete  from video_info where video_id=#{videoId}
+    </delete>
+    <insert id="insert" parameterType="com.aaron.videoplay.entity.VideoInfo" keyProperty="info.videoId" useGeneratedKeys="true">
+        insert into video_info(video_name,video_desc,video_url,video_up_user,video_up_time,video_category_id,video_img_url)
+        values(#{info.videoName},#{info.videoDesc},#{info.videoUrl},#{info.videoUpUser},now(),#{info.videoCategoryId},#{info.videoImgUrl}
+        )
+    </insert>
+
+
+</mapper>

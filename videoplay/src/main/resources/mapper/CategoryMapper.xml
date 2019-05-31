@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaron.videoplay.mapper.CategoryMapper">
+    <resultMap id="baseResultMap" type="com.aaron.videoplay.entity.VideoCategory">
+        <id column="category_id" property="categoryId" jdbcType="INTEGER" />
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+        <result column="category_des" property="categoryDes" jdbcType="VARCHAR"/>
+        <result column="category_img_url" property="categoryImgUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getAllCategory" resultMap="baseResultMap">
+        select*from video_category;
+    </select>
+    <select id="getCategoryById" resultMap="baseResultMap">
+        select*from video_category where category_id=#{id}
+    </select>
+
+</mapper>

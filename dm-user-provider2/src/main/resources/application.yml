@@ -1,0 +1,9 @@
+server:
+  port: 8079
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:7776/eureka/
+spring:
+  application:
+    name: dm-user-provider
